@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Noto+Sans+Gujarati:wght@400;600;800&display=swap");
+@import "tailwindcss";
+
+@theme static {
+  --font-sans:
+    "Bricolage Grotesque", "Noto Sans Gujarati", system-ui, sans-serif;
+  --color-page: #fff6fa;
+  --color-card: #ffffff;
+  --color-ink: #2a1b2e;
+  --color-muted: #6f5f76;
+  --color-line: #f2dce6;
+  --color-accent: #b5226f;
+  --color-soft: #fce7f1;
+  --color-danger: #b4234f;
+  --color-danger-soft: #fde6ee;
+  --radius-card: 1rem;
+  --shadow-card: 0 6px 20px rgba(221, 42, 123, 0.12);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid #8134af;
+  outline-offset: 2px;
+}
+
+/* Instagram gradient helpers */
+.text-insta {
+  background-image: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.ring-insta {
+  border: 2.5px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4) border-box;
+}
+
+.bg-insta-btn {
+  background-image: linear-gradient(45deg, #e1306c, #c13584, #833ab4);
+  color: #fff;
+}
+
+.btn-primary {
+  display: inline-block;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-image: linear-gradient(45deg, #e1306c, #c13584, #833ab4);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-ghost {
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  background: var(--color-soft);
+}

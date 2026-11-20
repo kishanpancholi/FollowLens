@@ -1,0 +1,120 @@
+export const translations = {
+  en: {
+    appName: "InstaTrack",
+    title: "See who doesn’t follow you back",
+    sub: "Upload your Instagram data export and get your lists in seconds. Nothing is sent to a server.",
+    drop: "Choose your followers and following files",
+    dropHint:
+      "Select all files at once, or upload the whole ZIP. Large accounts have followers_1.json, followers_2.json and so on.",
+    demo: "Try with demo data",
+    demoHint: "See how it works first.",
+    demoTag: "Demo data, not a real account",
+    reset: "Start over",
+    forget: "Change app/browser choice",
+    exportCsv: "Download this list (CSV)",
+    privacy:
+      "Your data stays on your device. Results reflect your export, so download a fresh one before checking.",
+    search: "Search username",
+    open: "Open profile",
+    empty: "No accounts here.",
+    more: "Show more",
+    followersFound: "Followers found",
+    followingFound: "Following found",
+    compare: "Compare with the counts on your profile",
+    exportDate: "Export date",
+    accuracyNote:
+      "Results come from your Instagram export. Recent follows, username changes, and deactivated accounts can cause small differences. Tap Open profile to verify any name.",
+    tabs: ["Not following you back", "You don’t follow back", "Mutuals"],
+    howTitle: "How to download your Instagram data",
+    howNote:
+      "Menu names can look slightly different depending on your app version.",
+    steps: [
+      "Open Instagram, go to your profile, tap the menu (☰) and open Accounts Center.",
+      "Tap Your information and permissions, then Download your information.",
+      "Tap Download or transfer information, choose your account, then Some of your information.",
+      "Select only Followers and following, then choose Download to device.",
+      "Set the date range to All time and the format to JSON (not HTML), then tap Submit.",
+      "Wait for Instagram’s email (a few minutes, sometimes longer) and download the ZIP file.",
+      "Unzip it and open connections → followers_and_following. Upload followers_1.json (and any other followers files) and following.json here.",
+    ],
+    chooseTitle: "Open this profile in",
+    openApp: "Instagram app",
+    openWeb: "Browser",
+    remember: "Remember my choice",
+    cancel: "Cancel",
+    privacyLink: "Privacy Policy",
+    termsLink: "Terms of Use",
+    back: "Back",
+    appNote: "The app option works on phones that have Instagram installed.",
+    errors: {
+      MISSING_FILES: "Both a followers file and a following file are needed.",
+      NO_USERNAMES:
+        "We couldn’t find usernames in these files. Upload followers_1.json and following.json from your Instagram export.",
+      UNKNOWN:
+        "Something went wrong while reading the files. Please try again.",
+    },
+  },
+
+  gu: {
+    appName: "InstaTrack",
+    title: "જુઓ કોણ તમને ફોલો બેક નથી કરતું",
+    sub: "તમારો Instagram ડેટા અપલોડ કરો અને થોડી સેકન્ડમાં લિસ્ટ મેળવો. કંઈ પણ સર્વર પર મોકલાતું નથી.",
+    drop: "તમારી followers અને following ફાઇલો પસંદ કરો",
+    dropHint:
+      "બધી ફાઇલો એકસાથે પસંદ કરો, અથવા આખી ZIP ફાઇલ અપલોડ કરો. વધુ ફોલોવર્સ હોય તો followers_1.json, followers_2.json વગેરે હોય છે.",
+    demo: "ડેમો ડેટાથી અજમાવો",
+    demoHint: "પહેલા જુઓ કેવું કામ કરે છે.",
+    demoTag: "ડેમો ડેટા, અસલી એકાઉન્ટ નથી",
+    reset: "ફરી શરૂ કરો",
+    forget: "એપ/બ્રાઉઝર પસંદગી બદલો",
+    privacy:
+      "તમારો ડેટા તમારા ડિવાઇસની બહાર જતો નથી. પરિણામ તમારા એક્સપોર્ટ પ્રમાણે છે, તેથી ચેક કરતા પહેલા નવો ડેટા ડાઉનલોડ કરો.",
+    search: "યુઝરનેમ શોધો",
+    open: "પ્રોફાઇલ ખોલો",
+    empty: "અહીં કોઈ નથી.",
+    more: "વધુ બતાવો",
+    followersFound: "મળેલા ફોલોવર્સ",
+    followingFound: "મળેલા ફોલોઇંગ",
+    compare: "તમારી પ્રોફાઇલના આંકડા સાથે સરખાવો",
+    tabs: ["તમને ફોલો બેક નથી કરતા", "તમે ફોલો બેક નથી કરતા", "મ્યુચ્યુઅલ"],
+    howTitle: "તમારો Instagram ડેટા કેવી રીતે ડાઉનલોડ કરવો",
+    howNote: "એપ વર્ઝન પ્રમાણે મેનુના નામ થોડા અલગ દેખાઈ શકે છે.",
+    steps: [
+      "Instagram ખોલો, તમારી પ્રોફાઇલ પર જાઓ, મેનુ (☰) પર ટેપ કરો અને Accounts Center ખોલો.",
+      "Your information and permissions પર ટેપ કરો, પછી Download your information.",
+      "Download or transfer information પર ટેપ કરો, તમારું એકાઉન્ટ પસંદ કરો, પછી Some of your information.",
+      "ફક્ત Followers and following પસંદ કરો, પછી Download to device પસંદ કરો.",
+      "Date range માં All time અને ફોર્મેટમાં JSON (HTML નહીં) પસંદ કરો, પછી Submit કરો.",
+      "Instagram તરફથી ઈમેલ આવવાની રાહ જુઓ (થોડી મિનિટથી લઈને ક્યારેક વધુ સમય) અને ZIP ફાઇલ ડાઉનલોડ કરો.",
+      "ZIP અનઝિપ કરો અને connections → followers_and_following ખોલો. followers_1.json (અને બીજી followers ફાઇલો) તથા following.json અહીં અપલોડ કરો.",
+    ],
+    chooseTitle: "આ પ્રોફાઇલ ખોલો",
+    openApp: "Instagram એપમાં",
+    openWeb: "બ્રાઉઝરમાં",
+    remember: "મારી પસંદગી યાદ રાખો",
+    cancel: "રદ કરો",
+    exportCsv: "આ લિસ્ટ ડાઉનલોડ કરો (CSV)",
+    appNote: "એપ વિકલ્પ Instagram ઇન્સ્ટોલ કરેલા ફોનમાં કામ કરે છે.",
+    errors: {
+      MISSING_FILES: "followers ફાઇલ અને following ફાઇલ, બંને જોઈએ.",
+      privacyLink: "પ્રાઇવસી પોલિસી",
+      termsLink: "ઉપયોગની શરતો",
+      back: "પાછા જાઓ",
+      NO_USERNAMES:
+        "આ ફાઇલોમાં યુઝરનેમ મળ્યા નથી. Instagram એક્સપોર્ટમાંથી followers_1.json અને following.json અપલોડ કરો.",
+      UNKNOWN: "ફાઇલો વાંચતી વખતે કંઈક ખોટું થયું. ફરી પ્રયાસ કરો.",
+      exportDate: "એક્સપોર્ટ તારીખ",
+      accuracyNote:
+        "પરિણામ તમારા Instagram એક્સપોર્ટ પ્રમાણે છે. તાજેતરના ફોલો, યુઝરનેમ બદલાવ અને ડિએક્ટિવેટ થયેલા એકાઉન્ટને કારણે થોડો તફાવત હોઈ શકે છે. કોઈ નામ ચકાસવા માટે પ્રોફાઇલ ખોલો દબાવો.",
+    },
+  },
+};
+
+export const languages = [
+  { code: "en", label: "English" },
+  { code: "gu", label: "ગુજરાતી" },
+];
+
+export function getText(lang) {
+  return translations[lang] || translations.en;
+}
