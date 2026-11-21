@@ -25,7 +25,7 @@ export function openProfile(how, username) {
     window.open(`https://instagram.com/${u}`, "_blank", "noopener,noreferrer");
 }
 
-export default function OpenProfileDialog({ t, username, onClose }) {
+export default function OpenProfileDialog({ t, username, onClose, onSaved }) {
   const ref = useRef(null);
   const [remember, setRemember] = useState(false);
 
@@ -45,6 +45,7 @@ export default function OpenProfileDialog({ t, username, onClose }) {
       } catch {
         /* ignore */
       }
+      onSaved?.();
     }
     openProfile(how, username);
     onClose();
@@ -54,29 +55,30 @@ export default function OpenProfileDialog({ t, username, onClose }) {
     <dialog
       ref={ref}
       onClose={onClose}
-      className="m-auto w-[calc(100%-2rem)] max-w-sm rounded-card border border-line bg-card p-5 text-ink shadow-card backdrop:bg-ink/50"
+      className="m-auto w-[calc(100%-2rem)] max-w-[380px] rounded-[18px] border border-line bg-card p-[22px] text-ink shadow-2xl backdrop:bg-ink/45"
     >
-      <h2 className="text-xl font-extrabold">{t.chooseTitle}</h2>
-      <p className="text-sm text-muted">@{username}</p>
+      <h2 className="text-[22px] font-extrabold">{t.chooseTitle}</h2>
+      <p className="mb-4 mt-0.5 break-all text-sm text-muted">@{username}</p>
 
-      <div className="my-4 grid gap-2">
-        <button onClick={() => choose("app")} className="btn-primary">
+      <div className="mb-4 grid gap-2.5">
+        <button onClick={() => choose("app")} className="btn-primary w-full">
           {t.openApp}
         </button>
-        <button onClick={() => choose("web")} className="btn-ghost">
+        <button onClick={() => choose("web")} className="btn-ghost w-full">
           {t.openWeb}
         </button>
       </div>
 
-      <label className="mb-3 flex items-center gap-2 text-sm">
+      <label className="mb-3 flex items-center gap-2 text-[15px]">
         <input
           type="checkbox"
           checked={remember}
           onChange={(e) => setRemember(e.target.checked)}
+          className="h-4 w-4 accent-[#c13584]"
         />
         {t.remember}
       </label>
-      <p className="mb-3 text-sm text-muted">{t.appNote}</p>
+      <p className="mb-3.5 text-sm text-muted">{t.appNote}</p>
       <button onClick={onClose} className="btn-ghost">
         {t.cancel}
       </button>

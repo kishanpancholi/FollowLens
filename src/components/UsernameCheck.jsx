@@ -1,24 +1,52 @@
 import { useState } from "react";
 
-export default function UsernameCheck({ followers, following }) {
+const STYLES = {
+  m: "bg-emerald-100 text-emerald-800",
+  nb: "bg-danger-soft text-danger",
+  yd: "bg-soft text-accent",
+  no: "bg-line text-muted",
+};
+
+export default function UsernameCheck({ t, followers, following }) {
   const [q, setQ] = useState("");
   const name = q.trim().toLowerCase().replace(/^@/, "");
 
+  let key = "";
+  if (name) {
+    const inFollowers = followers.has(name);
+    const inFollowing = following.has(name);
+    key =
+      inFollowers && inFollowing
+        ? "m"
+        : inFollowing
+          ? "nb"
+          : inFollowers
+            ? "yd"
+            : "no";
+  }
+
   return (
-    <details className="mb-4 text-sm">
-      <summary className="cursor-pointer">Check a username</summary>
+    <div>
+      <p className="mb-1.5 font-semibold">{t.checkTitle}</p>
       <input
+        type="text"
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        placeholder="username"
-        className="mt-2 w-full rounded-lg border border-line bg-card px-3 py-2"
+        placeholder={t.checkPh}
+        autoComplete="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        className="w-full rounded-card border border-line bg-card px-3.5 py-2.5"
       />
-      {name && (
-        <p className="mt-2">
-          In followers file: <b>{followers.has(name) ? "yes" : "no"}</b> · In
-          following file: <b>{following.has(name) ? "yes" : "no"}</b>
-        </p>
-      )}
-    </details>
+      <div aria-live="polite">
+        {key && (
+          <p
+            className={`mt-2 inline-block rounded-[10px] px-3 py-1.5 text-sm font-semibold ${STYLES[key]}`}
+          >
+            @{name}: {t.result[key]}
+          </p>
+        )}
+      </div>
+    </div>
   );
 }

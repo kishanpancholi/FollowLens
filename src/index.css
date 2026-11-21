@@ -13,7 +13,7 @@
   --color-soft: #fce7f1;
   --color-danger: #b4234f;
   --color-danger-soft: #fde6ee;
-  --radius-card: 1rem;
+  --radius-card: 0.875rem;
   --shadow-card: 0 6px 20px rgba(221, 42, 123, 0.12);
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .ring-insta {
-  border: 2.5px solid transparent;
+  border: 2px solid transparent;
   background:
     linear-gradient(#fff, #fff) padding-box,
     linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4) border-box;
@@ -52,29 +52,60 @@ body {
   color: #fff;
 }
 
-.btn-primary {
+/* Buttons: same rounded-rectangle shape as the cards */
+.btn-primary,
+.btn-ghost {
   display: inline-block;
-  border-radius: 0.75rem;
-  padding: 0.625rem 1.1rem;
+  text-align: center;
+  border-radius: var(--radius-card);
+  padding: 0.7rem 1.25rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
   color: #fff;
   background-image: linear-gradient(45deg, #e1306c, #c13584, #833ab4);
   box-shadow: var(--shadow-card);
-  cursor: pointer;
 }
 .btn-primary:hover {
   filter: brightness(1.08);
 }
 
 .btn-ghost {
-  border-radius: 0.75rem;
-  padding: 0.625rem 1.1rem;
-  font-weight: 600;
   color: var(--color-accent);
   background: var(--color-card);
   border: 1px solid var(--color-line);
-  cursor: pointer;
 }
 .btn-ghost:hover {
   background: var(--color-soft);
+}
+
+/* Numbered gradient steps for the download guide */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+}
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.6rem;
+  margin-bottom: 0.75rem;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background-image: linear-gradient(45deg, #e1306c, #c13584, #833ab4);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.875rem;
+  display: grid;
+  place-items: center;
 }

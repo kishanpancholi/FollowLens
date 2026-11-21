@@ -19,17 +19,17 @@ export default function UserList({ t, names, onOpen }) {
           setShown(PAGE_SIZE);
         }}
         placeholder={t.search}
-        className="mb-3 w-full rounded-lg border border-line bg-card px-3 py-2.5"
+        className="w-full rounded-card border border-line bg-card px-3.5 py-2.5"
       />
 
-      <div className="overflow-hidden rounded-card border border-line bg-card shadow-card">
+      <div className="mt-3 overflow-hidden rounded-card border border-line bg-card shadow-card">
         {rows.length === 0 ? (
-          <p className="p-6 text-center text-muted">{t.empty}</p>
+          <p className="p-7 text-center text-muted">{t.empty}</p>
         ) : (
           rows.slice(0, shown).map((name) => (
             <div
               key={name}
-              className="flex items-center gap-3 border-b border-line px-3 py-2 last:border-b-0"
+              className="flex items-center gap-3 border-b border-line px-3.5 py-2.5 last:border-b-0"
             >
               <div className="ring-insta grid h-10 w-10 shrink-0 place-items-center rounded-full font-extrabold text-accent">
                 {name.charAt(0).toUpperCase()}
@@ -39,7 +39,7 @@ export default function UserList({ t, names, onOpen }) {
               </div>
               <button
                 onClick={() => onOpen(name)}
-                className="whitespace-nowrap rounded-lg border border-line bg-card px-3 py-1.5 text-sm font-semibold text-accent hover:bg-soft"
+                className="whitespace-nowrap rounded-[10px] border border-line bg-card px-2.5 py-1.5 text-sm font-semibold text-accent hover:bg-soft"
               >
                 {t.open}
               </button>

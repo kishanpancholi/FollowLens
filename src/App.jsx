@@ -5,10 +5,12 @@ import { compareLists } from "./lib/compare";
 import { makeDemoData } from "./lib/demo";
 import { downloadCsv } from "./lib/csv";
 import UploadBox from "./components/UploadBox";
+import TrustCards from "./components/TrustCards";
 import HowToGuide from "./components/HowToGuide";
+import StatCards from "./components/StatCards";
+import UsernameCheck from "./components/UsernameCheck";
 import ResultTabs from "./components/ResultTabs";
 import UserList from "./components/UserList";
-import UsernameCheck from "./components/UsernameCheck";
 import LegalPage from "./components/LegalPage";
 import OpenProfileDialog, {
   getSavedChoice,
@@ -25,12 +27,13 @@ function getPage() {
 
 export default function App() {
   const [lang, setLang] = useState("en");
-  const [data, setData] = useState(null); // { followers, following, report, exportDate, isDemo }
+  const [data, setData] = useState(null); // { followers, following, exportDate, isDemo }
   const [errorKey, setErrorKey] = useState("");
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState(0);
   const [pendingUser, setPendingUser] = useState("");
   const [page, setPage] = useState(getPage());
+  const [savedChoice, setSavedChoice] = useState(getSavedChoice());
   const t = getText(lang);
 
   useEffect(() => {
@@ -46,9 +49,8 @@ export default function App() {
     setErrorKey("");
     setLoading(true);
     try {
-      const { followers, following, report, exportDate } =
-        await loadFiles(files);
-      setData({ followers, following, report, exportDate, isDemo: false });
+      const { followers, following, exportDate } = await loadFiles(files);
+      setData({ followers, following, exportDate, isDemo: false });
       setTab(0);
     } catch (e) {
       setErrorKey(e.message in t.errors ? e.message : "UNKNOWN");
@@ -59,7 +61,7 @@ export default function App() {
 
   function handleDemo() {
     setErrorKey("");
-    setData({ ...makeDemoData(), isDemo: true });
+    setData({ ...makeDemoData(), exportDate: "2026-11-16", isDemo: true });
     setTab(0);
   }
 
@@ -67,6 +69,7 @@ export default function App() {
     setData(null);
     setErrorKey("");
     setTab(0);
+    window.scrollTo(0, 0);
   }
 
   function askOpen(name) {
@@ -80,14 +83,18 @@ export default function App() {
     [data],
   );
   const lists = result
-    ? [result.notFollowingBack, result.youDontInstaTrack, result.mutuals]
+    ? [
+        result.notFollowingBack ?? [],
+        result.youDontFollowBack ?? [],
+        result.mutuals ?? [],
+      ]
     : null;
 
   return (
     <div className="min-h-screen bg-page text-ink">
-      <div className="mx-auto max-w-2xl px-4 py-5 pb-12">
-        <header className="mb-8 flex items-center justify-between">
-          <a href="#/" className="text-insta text-xl font-extrabold">
+      <div className="mx-auto max-w-2xl px-4 py-4 pb-10">
+        <header className="mb-5 flex items-center justify-between">
+          <a href="#/" className="text-insta text-[22px] font-extrabold">
             {t.appName}
           </a>
           <div
@@ -100,7 +107,7 @@ export default function App() {
                 key={l.code}
                 onClick={() => setLang(l.code)}
                 aria-pressed={lang === l.code}
-                className={`px-3 py-1.5 text-sm ${lang === l.code ? "bg-insta-btn font-semibold" : "text-muted"}`}
+                className={`px-3.5 py-1.5 text-sm ${lang === l.code ? "bg-insta-btn font-semibold" : "text-muted"}`}
               >
                 {l.label}
               </button>
@@ -112,10 +119,13 @@ export default function App() {
           <LegalPage t={t} page={page} />
         ) : !data ? (
           <>
+            <span className="ring-insta mb-3.5 inline-block rounded-full px-3.5 py-0.5 text-[13px] font-semibold text-accent">
+              {t.badge}
+            </span>
             <h1 className="text-insta mb-3 text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
               {t.title}
             </h1>
-            <p className="mb-6 max-w-prose text-muted">{t.sub}</p>
+            <p className="mb-5 max-w-prose text-muted">{t.sub}</p>
             <UploadBox
               t={t}
               onFiles={handleFiles}
@@ -123,6 +133,7 @@ export default function App() {
               loading={loading}
               errorKey={errorKey}
             />
+            <TrustCards t={t} />
             <HowToGuide t={t} />
           </>
         ) : (
@@ -133,32 +144,16 @@ export default function App() {
               </p>
             )}
 
-            <p className="mb-1 font-semibold">
-              {t.followersFound}: {data.followers.size.toLocaleString()} ·{" "}
-              {t.followingFound}: {data.following.size.toLocaleString()}
-            </p>
-            <p className="mb-4 text-sm text-muted">{t.compare}</p>
-
-            {data.exportDate && (
-              <p className="mb-4 text-sm font-semibold">
-                {t.exportDate}: {data.exportDate}
-              </p>
-            )}
-
-            {data.report && (
-              <details className="mb-4 text-sm">
-                <summary className="cursor-pointer">Files used</summary>
-                <ul className="mt-2 space-y-1">
-                  {data.report.map((r, i) => (
-                    <li key={i}>
-                      {r.file}: {r.type}, {r.entries} entries, {r.unique} unique
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            )}
+            <StatCards
+              t={t}
+              lang={lang}
+              followers={data.followers.size}
+              following={data.following.size}
+              exportDate={data.exportDate}
+            />
 
             <UsernameCheck
+              t={t}
               followers={data.followers}
               following={data.following}
             />
@@ -171,18 +166,18 @@ export default function App() {
             />
             <UserList key={tab} t={t} names={lists[tab]} onOpen={askOpen} />
 
-            <p className="mt-4 text-sm text-muted">{t.accuracyNote}</p>
+            <p className="my-4 text-sm text-muted">{t.accuracyNote}</p>
 
-            <div className="mt-4 flex flex-wrap gap-3">
-              <button onClick={reset} className="btn-ghost">
+            <div className="flex justify-between gap-3">
+              <button
+                onClick={reset}
+                className="btn-ghost max-w-[260px] flex-1"
+              >
                 {t.reset}
-              </button>
-              <button onClick={clearSavedChoice} className="btn-ghost">
-                {t.forget}
               </button>
               <button
                 onClick={() => downloadCsv(lists[tab], tab, data.exportDate)}
-                className="btn-primary"
+                className="btn-primary max-w-[260px] flex-1"
               >
                 {t.exportCsv}
               </button>
@@ -190,15 +185,26 @@ export default function App() {
           </>
         )}
 
-        <footer className="mt-10 text-sm text-muted">
-          <p>{t.privacy}</p>
-          <p className="mt-2 flex gap-4">
+        <footer className="mt-6 text-sm text-muted">
+          <p className="mb-2">{t.privacy}</p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
             <a href="#/privacy" className="underline">
               {t.privacyLink}
             </a>
             <a href="#/terms" className="underline">
               {t.termsLink}
             </a>
+            {savedChoice && (
+              <button
+                onClick={() => {
+                  clearSavedChoice();
+                  setSavedChoice(null);
+                }}
+                className="underline"
+              >
+                {t.forget}
+              </button>
+            )}
           </p>
         </footer>
 
@@ -206,6 +212,7 @@ export default function App() {
           t={t}
           username={pendingUser}
           onClose={() => setPendingUser("")}
+          onSaved={() => setSavedChoice(getSavedChoice())}
         />
       </div>
     </div>

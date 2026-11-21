@@ -1,6 +1,6 @@
 export function compareLists(followers, following) {
   const notFollowingBack = [];
-  const youDontInstaTrack = [];
+  const youDontFollowBack = [];
   const mutuals = [];
 
   for (const name of following) {
@@ -8,13 +8,13 @@ export function compareLists(followers, following) {
     else notFollowingBack.push(name);
   }
   for (const name of followers) {
-    if (!following.has(name)) youDontInstaTrack.push(name);
+    if (!following.has(name)) youDontFollowBack.push(name);
   }
 
   const sort = (list) => list.sort((a, b) => a.localeCompare(b));
   return {
     notFollowingBack: sort(notFollowingBack),
-    youDontInstaTrack: sort(youDontInstaTrack),
+    youDontFollowBack: sort(youDontFollowBack),
     mutuals: sort(mutuals),
   };
 }
