@@ -1,11 +1,11 @@
-const CONTACT_EMAIL = "your-email@example.com";
+const CONTACT_EMAIL = "kishan.dev0107@.com";
 const UPDATED = "19 November 2026";
 
 const privacy = [
   {
     h: "What this site does",
     p: [
-      "InstaTrack compares the followers and following lists from the data export that you download from Instagram, and shows you who does not follow you back.",
+      "FollowLens compares the followers and following lists from the data export that you download from Instagram, and shows you who does not follow you back.",
     ],
   },
   {
@@ -50,7 +50,7 @@ const terms = [
   {
     h: "About this tool",
     p: [
-      "InstaTrack is an independent tool. It is not affiliated with, endorsed by, or connected to Instagram or Meta.",
+      "FollowLens is an independent tool. It is not affiliated with, endorsed by, or connected to Instagram or Meta.",
     ],
   },
   {

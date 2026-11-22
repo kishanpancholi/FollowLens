@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    appName: "InstaTrack",
+    appName: "FollowLens",
     title: "See who doesn’t follow you back",
     sub: "Upload your Instagram data export and get your lists in seconds. Nothing is sent to a server.",
     dropTitle: "Upload your Instagram files",
@@ -65,6 +65,8 @@ export const translations = {
       no: "Not found in your lists",
     },
     appNote: "The app option works on phones that have Instagram installed.",
+    disclaimer:
+      "Not affiliated with Instagram or Meta. Instagram is a trademark of Meta Platforms, Inc.",
     errors: {
       MISSING_FILES: "Both a followers file and a following file are needed.",
       NO_USERNAMES:
@@ -75,7 +77,7 @@ export const translations = {
   },
 
   gu: {
-    appName: "InstaTrack",
+    appName: "FollowLens",
     title: "જુઓ કોણ તમને ફોલો બેક નથી કરતું",
     sub: "તમારો Instagram ડેટા અપલોડ કરો અને થોડી સેકન્ડમાં લિસ્ટ મેળવો. કંઈ પણ સર્વર પર મોકલાતું નથી.",
     dropTitle: "તમારી Instagram ફાઇલો અપલોડ કરો",
@@ -138,6 +140,8 @@ export const translations = {
     exportDate: "એક્સપોર્ટ તારીખ",
     accuracyNote:
       "પરિણામ તમારા Instagram એક્સપોર્ટ પ્રમાણે છે. તાજેતરના ફોલો, યુઝરનેમ બદલાવ અને ડિએક્ટિવેટ થયેલા એકાઉન્ટને કારણે થોડો તફાવત હોઈ શકે છે. કોઈ નામ ચકાસવા માટે પ્રોફાઇલ ખોલો દબાવો.",
+    disclaimer:
+      "આ સાઇટ Instagram અથવા Meta સાથે સંકળાયેલી નથી. Instagram એ Meta Platforms, Inc. નું ટ્રેડમાર્ક છે.",
     errors: {
       MISSING_FILES: "followers ફાઇલ અને following ફાઇલ, બંને જોઈએ.",
       NO_USERNAMES:

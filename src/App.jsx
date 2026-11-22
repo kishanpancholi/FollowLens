@@ -187,6 +187,7 @@ export default function App() {
 
         <footer className="mt-6 text-sm text-muted">
           <p className="mb-2">{t.privacy}</p>
+          <p className="mb-2">{t.disclaimer}</p>
           <p className="flex flex-wrap gap-x-4 gap-y-1">
             <a href="#/privacy" className="underline">
               {t.privacyLink}

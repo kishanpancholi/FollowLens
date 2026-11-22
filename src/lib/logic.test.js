@@ -49,6 +49,6 @@ describe("compare", () => {
     const r = compareLists(followers, following);
     expect(r.mutuals).toEqual(["sara_123"]);
     expect(r.notFollowingBack).toEqual(["raj"]);
-    expect(r.youDontInstaTrack).toEqual(["amit"]);
+    expect(r.youDontFollowLens).toEqual(["amit"]);
   });
 });
